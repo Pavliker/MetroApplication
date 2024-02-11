@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:MetroApplication.Views" xmlns:viewmodels="clr-namespace:MetroApplication.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowLoginViewModel}"
 
         mc:Ignorable="d"
-        Title="Login" Height="981" Width="663"  WindowStyle="None"  WindowStartupLocation="CenterScreen">
+        Title="Login"
+        Width="Auto"
+        Height="Auto"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight" WindowStyle="None"  WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
