@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="MetroApplication.Views.Auth"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MetroApplication.Views"
+             mc:Ignorable="d" 
+             Height="981" Width="663"  xmlns:viewmodels="clr-namespace:MetroApplication.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AuthOPViewModel}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+    
+
+        </Grid.RowDefinitions>
+        <Border Margin="25" Height="700" Style="{StaticResource border2}"  CornerRadius="39" Background="#C0D9D8" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock  Margin="0 10 0 10 " TextAlignment="Center"  Text="Авторизация" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" Foreground="#189991" FontSize="45" FontWeight="DemiBold"  />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Margin="0,40,0,0" VerticalAlignment="Top" Grid.RowSpan="3" >
+
+
+               
+
+                    <Label  Width="400" FontWeight="Normal" FontFamily="El Messiri" FontSize="30" Foreground="#0F4A63" Content="Логин"/>
+                    <TextBox Foreground="Black" FontSize="35" Text="{Binding Логин, UpdateSourceTrigger=PropertyChanged}"  Style="{DynamicResource roudedtextbox}" Width="388" Height="66"/>
+                    <Label Width="400" FontWeight="Normal"   FontFamily="El Messiri" FontSize="30" Foreground="#0F4A63" Margin="0 135 0 0" HorizontalAlignment="Center" Content="Пароль"/>
+                    <PasswordBox  Style="{DynamicResource roudedtextbox1}" Width="388" Height="66" Foreground="Silver" FontSize="35" PasswordChanged="PasswordBox_PasswordChanged"/>
+
+                    <!--<TextBox  Foreground="Black" FontSize="35" Text="{Binding Пароль, UpdateSourceTrigger=PropertyChanged}"   Style="{DynamicResource roudedtextbox}" Width="388" Height="66"/>-->
+                    <Button Style="{DynamicResource signbutton1}" Command="{Binding LoginCommand}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Войти" Margin="0 30 0 0" Width="180" Height="70" FontSize="32" Background="#9BDDE6"/>
+
+                   
+                </StackPanel>
+
+
+
+
+
+
+                <TextBlock    Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"><Hyperlink  Command="{Binding Path= NavigateToRegU}"><InlineUIContainer>
+        <TextBlock  FontSize="15" Text="{Binding Text}" FontWeight="Bold" Foreground="#123B2C" />
+
+        </InlineUIContainer></Hyperlink></TextBlock>
+
+
+
+                <StackPanel Grid.Row="2" VerticalAlignment="Bottom">
+                    <TextBlock  Width="500"  VerticalAlignment="Bottom" Margin="0 5 0 0" Grid.Row="1" DataContext="{Binding itemsService.errorMessage}"  Grid.Column="1" FontSize="16" Foreground ="Red" Text="{Binding Message}" Visibility="{Binding HasErrorMessage,Converter={ StaticResource BooleanToVisibilityConverter}}"/>
+
+                </StackPanel>
+
+            </Grid>
+            
+            
+            
+            
+        </Border>
+      
+
+
+
+
+
+
+    </Grid>
+</UserControl>

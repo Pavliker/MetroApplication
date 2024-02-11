@@ -1,0 +1,59 @@
+﻿<Window x:Class="MetroApplication.Views.Станции.DeleteStationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MetroApplication" xmlns:станции="clr-namespace:MetroApplication.ViewModels.Станции" d:DataContext="{d:DesignInstance Type=станции:DeleteStationViewModel}"
+        mc:Ignorable="d"
+       Height="459" Width="703"  AllowsTransparency="True"  WindowStyle="None"  WindowStartupLocation ="CenterScreen">
+    <Border CornerRadius="15">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.5*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Border   Grid.Row="0" Grid.ColumnSpan="3">
+                <Grid MouseLeftButtonDown="MouseDown" Style="{DynamicResource Header}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="0.1*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center"  Margin="5 0 0 0 " Grid.Column="3"  Orientation="Horizontal" >
+                        <Image   Style="{DynamicResource imgbtn}" Height="25" Width="25"   Source="/MetroApplication;component/Assets/Images/rollup.png" Stretch="Fill" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
+                        <Image Margin="10 0 20 0 " Style="{DynamicResource imgbtn}" Height="25" Width="25" Source="/MetroApplication;component/Assets/Images/cross.png" MouseLeftButtonDown="Image_MouseLeftButtonDown_1"/>
+                    </StackPanel>
+                </Grid>
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="5"  Color="#ACD6FA" />
+                </Border.Effect>
+            </Border>
+
+
+            <Label Style="{StaticResource lblfortitle}" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Content="Удаление"/>
+            <StackPanel Grid.Row="2" Margin="0 61 0 0" Orientation="Vertical"  Grid.Column="1">
+
+                <Label Style="{DynamicResource lbltextbox}" Content="Номер станции"/>
+
+                <TextBox IsReadOnly="True" Text="{Binding ССтанции.КодСтанции  ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"   Style="{DynamicResource roudedtextbox}"/>
+
+                
+            </StackPanel>
+            <Button Grid.Row="3" Grid.Column="1" Command="{Binding MyButtonClickCommandDeleteStation}" VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="0 30 0 0" Width="150" Height="50" Content="Удалить"/>
+
+
+        </Grid>
+    </Border>
+
+</Window>

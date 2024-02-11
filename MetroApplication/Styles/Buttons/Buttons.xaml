@@ -1,0 +1,84 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="ControlMouseOverColor">#8CAEA9</Color>
+    <SolidColorBrush x:Key="ButtonBrush" Color="#62C0AE" />
+
+    <ControlTemplate x:Key="Templateforbtns" TargetType="Button">
+        <Border   x:Name="Border"   Background="#9FD9C5" BorderThickness="4" CornerRadius="10">
+            <TextBlock FontWeight="Bold" Foreground="#4B7BA8" FontSize="16" x:Name="btntitle" Text="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Border" Property="Background" Value="#A6D1D9"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="#C3FFFF" Direction="280" ShadowDepth="6" BlurRadius="1"  />
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="btntitle" Property="Foreground" Value="#E0FFFF"/>
+               
+
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Templateforbtns1" TargetType="Button">
+     <Border   x:Name="Border"   Background="#6FAF98" CornerRadius="10">
+            <TextBlock Foreground="#2C226B" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="btntitle" Text="{Binding reg}"></TextBlock>
+     </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Border" Property="Background" Value="#A6D1D9"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="Black" Direction="280" ShadowDepth="1" BlurRadius="7.7"  />
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="btntitle" Property="Foreground" Value="#E0FFFF"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+  
+
+
+    <Style TargetType="{x:Type Button}"  >
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Background" Value="{StaticResource ButtonBrush}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#205982"/>
+        <Setter Property="FontFamily" Value="Roboto Serif"/>
+        <Setter Property="FontSize" Value="24"/>
+        <!--<Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=IsVisible}" 
+                         Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>
+        </Style.Triggers>-->
+
+    </Style>
+
+    <Style x:Key="butMenu"  TargetType="Button">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver"  Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+       
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="roudedbutton1" TargetType="{x:Type Button}">
+        <Setter Property="Template" Value="{StaticResource Templateforbtns}"/>
+
+    </Style>
+    <Style x:Key="signbutton1" TargetType="{x:Type Button}">
+        <Setter Property="Template" Value="{StaticResource Templateforbtns1}"/>
+    </Style>
+
+</ResourceDictionary>

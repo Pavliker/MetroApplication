@@ -1,0 +1,86 @@
+﻿<Window x:Class="MetroApplication.MainWindow"
+       
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:MetroApplication.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+        mc:Ignorable="d"
+        Height="720" 
+        Width="1280"
+        AllowsTransparency="True" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" 
+        Icon="Assets\Icons\train.ico"
+       x:Name="mainwnd">
+ 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+     
+        <Border   Grid.Row="0" Grid.ColumnSpan="3">
+            <Grid MouseLeftButtonDown="MouseDown" Style="{DynamicResource Header}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel VerticalAlignment="Center"  Margin="5 0 0 0 " Grid.Column="3"  Orientation="Horizontal" >
+                    <Image   Style="{DynamicResource imgbtn}" Height="25" Width="25"   Source="/MetroApplication;component/Assets/Images/rollup.png" Stretch="Fill" MouseDown="Image_MouseDown1" />
+                    <Image Style="{DynamicResource imgbtn}" Margin="10 0 0 0" Height="25" Width="25"    Source="/Assets/Images/png.png" MouseDown="Image_MouseDown" />
+                    <Image Margin="10 0 20 0 " Style="{DynamicResource imgbtn}" Height="25" Width="25" Source="/MetroApplication;component/Assets/Images/cross.png" MouseLeftButtonDown="Image_MouseLeftButtonDown_1"/>
+                </StackPanel>
+                <Label Margin="70 0 0 0"  Style="{DynamicResource titletxt}" HorizontalAlignment="Center" Grid.ColumnSpan="2" Content="Учёт настроек терминалов"/>
+            </Grid>
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="5"  Color="#ACD6FA" />
+            </Border.Effect>
+        </Border>
+        <Border Grid.ColumnSpan="3" Grid.Row="1"  CornerRadius="60"  >
+            
+            <Grid Style="{DynamicResource Section1}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+
+               
+                   
+                    <Button Command ="{Binding NavigateToTables}"  Tag="Таблицы" Style="{StaticResource roudedbutton1}"  BorderThickness="0" Background="Transparent" Margin="10"  Grid.Column="1"  Width="140" Height="77"/>
+
+
+
+                    <Button Command="{Binding NavigateToArchive}" Tag="Архив настроек терминалов"  Style="{StaticResource roudedbutton1}"  BorderThickness="0" Background="Transparent" Margin="10"  Grid.Column="1"  Width="140" Height="77"/>
+                    <Button  Command="{Binding NavigateToTerminalsAndStations}" Tag="Терминалы на станциях"   Style="{StaticResource roudedbutton1}"  BorderThickness="0" Background="Transparent" Margin="10"  Grid.Column="1"  Width="140" Height="77"/>
+
+
+                    <Button Command="{Binding NavigateToSchemOfMetro}"  Tag="Схема метрополитена"  Style="{StaticResource roudedbutton1}"  BorderThickness="0" Background="Transparent" Margin="10"  Grid.Column="1"  Width="140" Height="77"/>
+
+
+
+                    <Button  Command="{Binding NavigateToReports}" Tag="Отчёты"   Style="{StaticResource roudedbutton1}"  BorderThickness="0" Background="Transparent" Margin="10"  Grid.Column="1"  Width="140" Height="77"/>
+
+               
+                </StackPanel>
+                <StackPanel  Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Margin="0 0 10 0" Grid.Row="1" Content="Выйти" Grid.Column="2"  />
+                </StackPanel>
+            </Grid>
+        </Border>
+        <ContentControl  Grid.Row="2" Grid.ColumnSpan="3" Content="{Binding Navigation.CurrentView}"></ContentControl>
+    </Grid>
+</Window>

@@ -1,0 +1,89 @@
+﻿<Window x:Class="MetroApplication.Views.Терминалы.AddTerminalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MetroApplication" xmlns:терминалы="clr-namespace:MetroApplication.ViewModels.Терминалы" d:DataContext="{d:DesignInstance Type=терминалы:AddTerminalViewModel}"
+        mc:Ignorable="d"
+         MinWidth="703"
+        MaxHeight="650"
+        MaxWidth="703"  
+  AllowsTransparency="True"  WindowStyle="None"  WindowStartupLocation="CenterScreen"
+Style="{DynamicResource AddEditDeleteWindow}" Name="_window">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+    <Border CornerRadius="15">
+        <Grid >
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.2*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Border   Grid.Row="0" Grid.ColumnSpan="3">
+                <Grid MouseLeftButtonDown="MouseDown" Style="{DynamicResource Header}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/> 
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center"  Margin="5 0 0 0 " Grid.Column="3"  Orientation="Horizontal" >
+                        <Image   Style="{DynamicResource imgbtn}" Height="25" Width="25"   Source="/MetroApplication;component/Assets/Images/rollup.png" Stretch="Fill" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
+                        <Image Margin="10 0 20 0 " Style="{DynamicResource imgbtn}" Height="25" Width="25" Source="/MetroApplication;component/Assets/Images/cross.png" MouseLeftButtonDown="Image_MouseLeftButtonDown_1"/>
+                    </StackPanel>
+                </Grid>
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="5"  Color="#ACD6FA" />
+                </Border.Effect>
+            </Border>
+            <Label Grid.Row="1" Style="{StaticResource lblfortitle}" Margin="0 10 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Content="Добавление"/>
+            <StackPanel Margin="0 0 0 0" Orientation="Vertical" Grid.Row="2" Grid.Column="1">
+
+                <Label Style="{DynamicResource lbltextbox}" Content="Название терминала"/>
+
+                <TextBox Text="{Binding НазваниеТерминала,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"   Style="{DynamicResource roudedtextbox}"/>
+
+                <Label Style="{DynamicResource lbltextbox}"  Content="Код станции"/>
+
+                <TextBox Text="{Binding КодСтанции,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource roudedtextbox}"/>
+                <Label Style="{DynamicResource lbltextbox}"  Content="Локальный адрес"/>
+
+                <TextBox Text="{Binding ЛокальныйАдрес,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Style="{DynamicResource roudedtextbox}"/>
+                <Label Style="{DynamicResource lbltextbox}" Content="Маска подсети"/>
+
+                <TextBox Text="{Binding МаскаПодсети,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource roudedtextbox}"/>
+                <Label Style="{DynamicResource lbltextbox}" Content="Адрес шлюза"/>
+
+                <TextBox Text="{Binding АдресШлюза,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource roudedtextbox}"/>
+                <Label Style="{DynamicResource lbltextbox}" Content="АдресСервера"/>
+
+                <TextBox Text="{Binding АдресСервера,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource roudedtextbox}"/>
+                <Label Style="{DynamicResource lbltextbox}"  Content="Порт хоста"/>
+
+                <TextBox  Text="{Binding ПортХоста,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource roudedtextbox}"/>
+
+
+            </StackPanel>
+            <Button Margin="0 10 0 0"  Command="{Binding ButtonCommandAddTerminal}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  Width="150" Height="50" Content="Добавить"/>
+
+
+            <TextBlock Grid.Row="5" Margin="0 5 0 0" DataContext="{Binding _itemsService.errorMessage}" Grid.Column="1" FontSize="16" Foreground ="Red" Text="{Binding Message}" Visibility="{Binding HasErrorMessage,Converter={ StaticResource BooleanToVisibilityConverter}}"/>
+
+
+        </Grid>
+    </Border>
+
+</Window>

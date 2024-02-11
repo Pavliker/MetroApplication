@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="MetroApplication.Views.Станции1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+
+             xmlns:local="clr-namespace:MetroApplication.Views" 
+             xmlns:viewmodels="clr-namespace:MetroApplication.ViewModels" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             >
+
+    <DataGrid  IsReadOnly="True"  x:Name="datagrid"  GridLinesVisibility="None" SelectionMode="Single"  SelectionUnit="FullRow"   HeadersVisibility="Column" AutoGenerateColumns="False"  RowStyle="{DynamicResource rowstyle}" ColumnHeaderStyle="{DynamicResource headerstyle}" Style="{DynamicResource stationsdatagrid}" ItemsSource="{Binding ItemsService.Станции, Mode=TwoWay}" SelectedItem="{Binding ССтанции, Mode=TwoWay}" SelectionChanged="datagrid_SelectionChanged" MouseLeftButtonDown="datagrid_MouseLeftButtonDown">
+            <DataGrid.Columns   >
+            <DataGridTextColumn  Header="Номер станции" Binding="{Binding КодСтанции, UpdateSourceTrigger=PropertyChanged}"/>
+            <DataGridTextColumn Header="Название станции"  Binding="{Binding НазваниеСтанции, UpdateSourceTrigger=PropertyChanged}"/>
+            <DataGridTextColumn Header="Адрес сервера"  Binding="{Binding АдресСервера, UpdateSourceTrigger=PropertyChanged}"/>
+            <DataGridTextColumn Header="Шлюз"  Binding="{Binding Шлюз, UpdateSourceTrigger=PropertyChanged}"/>
+            <DataGridTextColumn Header="Маска"  Binding="{Binding Маска, UpdateSourceTrigger=PropertyChanged}" />
+            </DataGrid.Columns>
+       
+  
+       
+    </DataGrid>
+ 
+  
+
+
+
+
+</UserControl>
